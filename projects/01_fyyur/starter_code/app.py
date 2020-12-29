@@ -29,12 +29,13 @@ migrate = Migrate(app, db)
 #----------------------------------------------------------------------------#
 # Models.
 #----------------------------------------------------------------------------#
-Show = db.Table('Show',
-    db.Column('venue_id', db.Integer, db.ForeignKey('Venue.id'), primary_key=True),
-    db.Column('artist_id', db.Integer, db.ForeignKey('Artist.id'), primary_key=True),
-    db.Column('start_time', db.DateTime, nullable=False)
-)
+class Show(db.Model):
+  __tablename__ = 'Show'
 
+  venue_id = db.Column(db.Integer, db.ForeignKey('Venue.id'), primary_key=True),
+  artist_id = db.Column(db.Integer, db.ForeignKey('Artist.id'), primary_key=True),
+  start_time = db.Column(db.DateTime, nullable=False)
+  
 class Venue(db.Model):
     __tablename__ = 'Venue'
 
